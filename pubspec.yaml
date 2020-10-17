@@ -54,6 +54,7 @@ flutter:
     - assets/images/smash_kids.gif
     - assets/images/otaku_logo.png
     - assets/images/otaku_now_logo.png
+    - assets/images/otaku_now_light.png
     - assets/otaku_splash.flr
     - assets/earth.flr
     - assets/ninja.flr
