@@ -8,7 +8,6 @@ class ApiErrorMessage {
   const ApiErrorMessage(this.status, this.type, this.message, this.error);
 
   static ApiErrorMessage fromJson(dynamic json) {
-    print(json['status']);
     return ApiErrorMessage(
       json['status'] as int,
       json['type'] as String,
