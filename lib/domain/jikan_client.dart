@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:otakunow/domain/episodes/series_episodes.dart';
 import 'package:otakunow/domain/search/search_result.dart';
 import 'package:otakunow/domain/search/search_result_error.dart';
-import 'package:otakunow/domain/episodes/series_episodes.dart';
 
 class JikanClient {
   final http.Client httpClient;

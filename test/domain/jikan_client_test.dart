@@ -6,12 +6,12 @@ import 'package:otakunow/domain/jikan_client.dart';
 import 'package:otakunow/domain/search/search_result.dart';
 import 'package:otakunow/domain/search/search_result_error.dart';
 
-class MockJikanClient extends Mock implements http.Client {}
+class MockHttpClient extends Mock implements http.Client {}
 
 main() {
   group('search', () {
     final baseUrl = 'https://api.jikan.moe/v3/search/anime?q=';
-    final httpClient = MockJikanClient();
+    final httpClient = MockHttpClient();
     final jikanClient = JikanClient(httpClient: httpClient);
 
     test('should be able to search for a series title with the given search term', () async {
@@ -73,7 +73,7 @@ main() {
 
   group('fetchResource', () {
     final baseUrl = 'https://api.jikan.moe/v3/anime';
-    final httpClient = MockJikanClient();
+    final httpClient = MockHttpClient();
     final jikanClient = JikanClient(httpClient: httpClient);
 
     test('should be able to fetch resource details with the given series id', () async {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:otakunow/config/palette.dart';
-import 'package:otakunow/screens/content_item.dart';
+import 'package:otakunow/widgets/content_item.dart';
 
 class ContentScroll<T extends ContentItem> extends StatelessWidget {
   final List<T> items;

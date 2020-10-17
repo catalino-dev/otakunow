@@ -1,10 +1,10 @@
 import 'dart:async';
 
+import 'package:otakunow/domain/episodes/series_episode_cache.dart';
+import 'package:otakunow/domain/episodes/series_episodes.dart';
 import 'package:otakunow/domain/jikan_client.dart';
 import 'package:otakunow/domain/search/search_result.dart';
 import 'package:otakunow/domain/search/series_cache.dart';
-import 'package:otakunow/domain/episodes/series_episode_cache.dart';
-import 'package:otakunow/domain/episodes/series_episodes.dart';
 
 class SeriesRepository {
   final SeriesCache cache;

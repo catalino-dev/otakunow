@@ -2,12 +2,12 @@ import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:otakunow/config/theme.dart';
+import 'package:otakunow/domain/episodes/series_episode_cache.dart';
 import 'package:otakunow/domain/episodes/series_episodes_bloc.dart';
 import 'package:otakunow/domain/jikan_client.dart';
 import 'package:otakunow/domain/search/series_cache.dart';
-import 'package:otakunow/domain/episodes/series_episode_cache.dart';
-import 'package:otakunow/domain/series_repository.dart';
 import 'package:otakunow/domain/search/series_search_bloc.dart';
+import 'package:otakunow/domain/series_repository.dart';
 import 'package:otakunow/screens/screens.dart';
 import 'package:otakunow/screens/series_screen.dart';
 

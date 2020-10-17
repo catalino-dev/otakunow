@@ -1,4 +1,4 @@
-import 'package:otakunow/screens/content_item.dart';
+import 'package:otakunow/widgets/content_item.dart';
 
 class SeriesEpisode extends ContentItem {
   final int episodeNo;
