@@ -29,14 +29,16 @@ class SeriesEpisodesBloc extends Bloc<SeriesEpisodesEvent, SeriesEpisodesState> 
 
   @override
   Stream<SeriesEpisodesState> mapEventToState(SeriesEpisodesEvent event) async* {
-    if (event is ResourceChanged) {
+    if (event is ResourceUpdated) {
       final int resourceId = event.resourceId;
       if (resourceId == null) {
         yield EpisodeStateEmpty();
       } else {
         yield EpisodeStateLoading();
         try {
-          await Future<void>.delayed(Duration(seconds: 3));
+          await Future<void>.delayed(Duration(seconds: 2));
+          print('------------------------------------------');
+          print(resourceId);
           final query = await seriesRepository.fetchResource(resourceId);
           yield EpisodeStateSuccess(query.episodes);
         } catch (error) {

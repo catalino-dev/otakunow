@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:otakunow/domain/episodes/series_episode.dart';
 import 'package:otakunow/domain/episodes/series_episodes_bloc.dart';
 import 'package:otakunow/domain/episodes/series_episodes_state.dart';
+import 'package:otakunow/screens/episode_screen.dart';
 import 'package:otakunow/screens/series_screen.dart';
 import 'package:otakunow/widgets/content_scroll.dart';
 
@@ -16,10 +17,16 @@ class EpisodesPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return BlocBuilder<SeriesEpisodesBloc, SeriesEpisodesState>(
       builder: (context, state) {
         if (state is EpisodeStateLoading) {
-          return const CircularProgressIndicator();
+          return Image(
+            image: AssetImage('assets/images/smash_kids.gif'),
+            height: 300,
+            width: screenWidth,
+          );
         }
         if (state is EpisodeStateError) {
           return Text(state.error);
@@ -42,11 +49,17 @@ class _SeriesEpisodes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ContentScroll(
-      itemCount: episodes.length,
+    return ContentScroll<SeriesEpisode>(
+      items: episodes,
       title: 'Episodes',
       boxHeight: 200.0,
       boxWidth: 250.0,
+      press: (index) => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => EpisodeScreen(episode: episodes[index]),
+        ),
+      ),
     );
   }
 }

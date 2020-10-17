@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
 import 'package:http/http.dart' as http;
+import 'package:mockito/mockito.dart';
+import 'package:otakunow/domain/episodes/series_episodes.dart';
 import 'package:otakunow/domain/jikan_client.dart';
 import 'package:otakunow/domain/search/search_result.dart';
-import 'package:otakunow/domain/episodes/series_episode.dart';
-import 'package:otakunow/domain/episodes/series_episodes.dart';
 
+// TODO: Tests should be written from the requirements stated above, including rate limited scenario.
 class MockJikanClient extends Mock implements http.Client {}
 
 main() {

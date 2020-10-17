@@ -4,15 +4,15 @@ class SearchResultItem {
   final String imageUrl;
   final String title;
   // final bool airing;
-  // final String synopsis;
   // final String type;
   final int episodes;
+  final String synopsis;
   // final String score;
   // final String startDate;
   // final String endDate;
   // final String rated;
 
-  SearchResultItem(this.id, this.url, this.imageUrl, this.title, this.episodes);
+  SearchResultItem(this.id, this.url, this.imageUrl, this.title, this.episodes, this.synopsis);
 
   // SearchResultItem(this.id, this.url, this.imageUrl, this.title, this.airing, this.synopsis,
   //     this.type, this.episodes, this.score, this.startDate, this.endDate, this.rated);
@@ -24,6 +24,7 @@ class SearchResultItem {
       json['image_url'],
       json['title'],
       json['episodes'] as int,
+      json['synopsis'],
     );
     // return SearchResultItem(
     //   json['mal_id'],

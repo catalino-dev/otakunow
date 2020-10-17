@@ -30,8 +30,10 @@ class JikanClient {
   }
 
   Future<SeriesEpisodes> fetchResource(int resourceId) async {
-    final response = await httpClient.get("https://api.jikan.moe/v3/anime/$resourceId/episodes");
+    final response = await httpClient.get("https://api.jikan.moe/v3/anime/$resourceId/episodes/1");
     final results = json.decode(response.body);
+    print('------------------------------------------');
+    print(results);
 
     if (response.statusCode == 200) {
       return SeriesEpisodes.fromJson(results);

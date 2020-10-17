@@ -24,10 +24,14 @@ class SeriesRepository {
   }
 
   Future<SeriesEpisodes> fetchResource(int id) async {
+    print('=======================================');
+    print(episodeCache.contains(id));
     if (episodeCache.contains(id)) {
       return episodeCache.get(id);
     } else {
       final result = await client.fetchResource(id);
+      print('------------------------------------------');
+      print(result);
       episodeCache.set(id, result);
       return result;
     }

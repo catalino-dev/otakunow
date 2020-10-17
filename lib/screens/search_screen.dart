@@ -1,5 +1,8 @@
+import 'package:flare_flutter/flare_actor.dart';
+import 'package:flare_flutter/flare_controls.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:otakunow/domain/episodes/series_episodes_bloc.dart';
 import 'package:otakunow/domain/search/search_result_item.dart';
 import 'package:otakunow/domain/search/series_search_bloc.dart';
 import 'package:otakunow/domain/search/series_search_event.dart';
@@ -65,12 +68,24 @@ class _SearchBarState extends State<_SearchBar> {
 }
 
 class _SearchBody extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight= MediaQuery.of(context).size.height;
+
     return BlocBuilder<SeriesSearchBloc, SeriesSearchState>(
       builder: (context, state) {
         if (state is SearchStateLoading) {
-          return const CircularProgressIndicator();
+          return Container(
+            height: screenHeight / 3,
+            child: const FlareActor(
+              'assets/earth.flr',
+              alignment: Alignment.topCenter,
+              fit: BoxFit.scaleDown,
+              animation: 'loading',
+            ),
+          );
         }
         if (state is SearchStateError) {
           return Text(state.error);
@@ -80,7 +95,15 @@ class _SearchBody extends StatelessWidget {
               ? const Text('No Results')
               : Expanded(child: _SearchResults(results: state.results));
         }
-        return const Text('Please enter a term to begin');
+        return Container(
+          height: screenHeight / 3,
+          child: const FlareActor(
+            'assets/earth.flr',
+            alignment: Alignment.topCenter,
+            fit: BoxFit.scaleDown,
+            animation: 'idle',
+          ),
+        );
       },
     );
   }
@@ -120,7 +143,11 @@ class _SearchResultItem extends StatelessWidget {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (_) => SeriesScreen(item: item),
+          builder: (_) =>
+            BlocProvider.value(
+              value: BlocProvider.of<SeriesEpisodesBloc>(context),
+              child: SeriesScreen(item: item),
+            ),
         ),
       ),
       child: Container(

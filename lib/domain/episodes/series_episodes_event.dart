@@ -4,10 +4,10 @@ abstract class SeriesEpisodesEvent extends Equatable {
   const SeriesEpisodesEvent();
 }
 
-class ResourceChanged extends SeriesEpisodesEvent {
+class ResourceUpdated extends SeriesEpisodesEvent {
   final int resourceId;
 
-  const ResourceChanged({this.resourceId});
+  const ResourceUpdated({this.resourceId});
 
   @override
   List<Object> get props => [resourceId];

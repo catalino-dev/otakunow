@@ -22,9 +22,8 @@ class _SeriesScreenState extends State<SeriesScreen> {
   void initState() {
     super.initState();
     _seriesEpisodesBloc = BlocProvider.of<SeriesEpisodesBloc>(context);
-    print('----------------mal_id: ${widget.item.id}');
     _seriesEpisodesBloc.add(
-      ResourceChanged(resourceId: widget.item.id),
+      ResourceUpdated(resourceId: widget.item.id),
     );
   }
 
@@ -37,7 +36,7 @@ class _SeriesScreenState extends State<SeriesScreen> {
           Stack(
             children: <Widget>[
               Container(
-                transform: Matrix4.translationValues(0.0, -50.0, 0.0),
+                transform: Matrix4.translationValues(0.0, -40.0, 0.0),
                 child: Hero(
                   tag: widget.item.imageUrl,
                   child: ClipShadowPath(
@@ -45,7 +44,7 @@ class _SeriesScreenState extends State<SeriesScreen> {
                     shadow: Shadow(blurRadius: 15.0),
                     child: Image.network(
                       widget.item.imageUrl,
-                      height: 300.0,
+                      height: 242.0,
                       width: double.infinity,
                       fit: BoxFit.cover,
                     ),
@@ -60,38 +59,39 @@ class _SeriesScreenState extends State<SeriesScreen> {
                     onPressed: () => Navigator.pop(context),
                     icon: Icon(Icons.arrow_back),
                     iconSize: 30.0,
-                    color: Colors.black,
+                    color: Colors.white,
                   ),
-                  // Image(
-                  //   image: AssetImage('assets/images/netflix_logo.png'),
-                  //   height: 60.0,
-                  //   width: 150.0,
-                  // ),
+                  Image(
+                    image: AssetImage('assets/images/otaku_logo.png'),
+                    height: 60.0,
+                    width: 150.0,
+                    color: Colors.white,
+                  ),
                   IconButton(
-                    padding: EdgeInsets.only(left: 30.0),
+                    padding: EdgeInsets.only(right: 30.0),
                     onPressed: () => print('Add to Favorites'),
-                    icon: Icon(Icons.favorite_border),
+                    icon: Icon(Icons.favorite),
                     iconSize: 30.0,
-                    color: Colors.black,
+                    color: Colors.white,
                   ),
                 ],
               ),
             ],
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
+            padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  widget.item.title.toUpperCase(),
+                  widget.item.title,
                   style: TextStyle(
-                    fontSize: 20.0,
+                    fontSize: 24.0,
                     fontWeight: FontWeight.bold,
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 10.0),
+                SizedBox(height: 8.0),
                 Text(
                   'ANIME',
                   style: TextStyle(
@@ -100,9 +100,8 @@ class _SeriesScreenState extends State<SeriesScreen> {
                   ),
                 ),
                 SizedBox(height: 12.0),
-                Text(
-                  '⭐ ⭐ ⭐ ⭐',
-                  style: TextStyle(fontSize: 25.0),
+                Divider(
+                    color: Colors.blueGrey
                 ),
                 SizedBox(height: 15.0),
                 Row(
@@ -111,17 +110,17 @@ class _SeriesScreenState extends State<SeriesScreen> {
                     Column(
                       children: <Widget>[
                         Text(
-                          'Year',
+                          'AIRING',
                           style: TextStyle(
                             color: Colors.black54,
-                            fontSize: 16.0,
+                            fontSize: 14.0,
                           ),
                         ),
                         SizedBox(height: 2.0),
                         Text(
-                          '1999',
+                          'Yes',
                           style: TextStyle(
-                            fontSize: 20.0,
+                            fontSize: 16.0,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -130,36 +129,17 @@ class _SeriesScreenState extends State<SeriesScreen> {
                     Column(
                       children: <Widget>[
                         Text(
-                          'Country',
+                          'EPISODES',
                           style: TextStyle(
                             color: Colors.black54,
-                            fontSize: 16.0,
+                            fontSize: 14.0,
                           ),
                         ),
                         SizedBox(height: 2.0),
                         Text(
-                          'TEST',
+                          widget.item.episodes.toString(),
                           style: TextStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: <Widget>[
-                        Text(
-                          'Length',
-                          style: TextStyle(
-                            color: Colors.black54,
                             fontSize: 16.0,
-                          ),
-                        ),
-                        SizedBox(height: 2.0),
-                        Text(
-                          '3 episodes',
-                          style: TextStyle(
-                            fontSize: 20.0,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -172,7 +152,7 @@ class _SeriesScreenState extends State<SeriesScreen> {
                   height: 120.0,
                   child: SingleChildScrollView(
                     child: Text(
-                      'Long but short description',
+                      widget.item.synopsis,
                       style: TextStyle(
                         color: Colors.black54,
                       ),
