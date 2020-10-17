@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:otakunow/domain/episodes/series_episodes_bloc.dart';
 import 'package:otakunow/domain/jikan_client.dart';
 import 'package:otakunow/domain/search/series_cache.dart';
 import 'package:otakunow/domain/episodes/series_episode_cache.dart';
@@ -31,9 +32,17 @@ class OtakuNowApp extends StatelessWidget {
       title: 'Otaku Now',
       home: Scaffold(
         appBar: AppBar(title: const Text('Otaku Now')),
-        body: BlocProvider(
-          create: (context) =>
-              SeriesSearchBloc(githubRepository: seriesRepository),
+        body: MultiBlocProvider(
+          providers: [
+            BlocProvider<SeriesSearchBloc>(
+              create: (BuildContext context) =>
+                  SeriesSearchBloc(seriesRepository: seriesRepository),
+            ),
+            BlocProvider<SeriesEpisodesBloc>(
+              create: (BuildContext context) =>
+                  SeriesEpisodesBloc(seriesRepository: seriesRepository),
+            ),
+          ],
           child: SearchScreen(),
         ),
       ),

@@ -9,9 +9,9 @@ import 'package:rxdart/rxdart.dart';
 import 'package:bloc/bloc.dart';
 
 class SeriesSearchBloc extends Bloc<SeriesSearchEvent, SeriesSearchState> {
-  final SeriesRepository githubRepository;
+  final SeriesRepository seriesRepository;
 
-  SeriesSearchBloc({@required this.githubRepository})
+  SeriesSearchBloc({@required this.seriesRepository})
       : super(SearchStateEmpty());
 
   @override
@@ -37,7 +37,7 @@ class SeriesSearchBloc extends Bloc<SeriesSearchEvent, SeriesSearchState> {
         yield SearchStateLoading();
         try {
           await Future<void>.delayed(Duration(seconds: 3));
-          final query = await githubRepository.search(searchTerm);
+          final query = await seriesRepository.search(searchTerm);
           yield SearchStateSuccess(query.results);
         } catch (error) {
           yield error is ApiErrorMessage
