@@ -69,7 +69,7 @@ class _SeriesScreenState extends State<SeriesScreen> {
                   ),
                   IconButton(
                     padding: EdgeInsets.only(right: 30.0),
-                    onPressed: () => print('Add to Favorites'),
+                    onPressed: () => print('Thanks for the heart.'),
                     icon: Icon(Icons.favorite),
                     iconSize: 30.0,
                     color: Colors.white,

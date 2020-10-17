@@ -37,8 +37,6 @@ class SeriesEpisodesBloc extends Bloc<SeriesEpisodesEvent, SeriesEpisodesState> 
         yield EpisodeStateLoading();
         try {
           await Future<void>.delayed(Duration(seconds: 2));
-          print('------------------------------------------');
-          print(resourceId);
           final query = await seriesRepository.fetchResource(resourceId);
           yield EpisodeStateSuccess(query.episodes);
         } catch (error) {

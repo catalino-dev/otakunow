@@ -1,6 +1,7 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:otakunow/config/theme.dart';
 import 'package:otakunow/domain/episodes/series_episodes_bloc.dart';
 import 'package:otakunow/domain/jikan_client.dart';
 import 'package:otakunow/domain/search/series_cache.dart';
@@ -11,7 +12,6 @@ import 'package:otakunow/screens/screens.dart';
 import 'package:otakunow/screens/series_screen.dart';
 
 void main() {
-
   runApp(OtakuNowApp());
 }
 
@@ -21,24 +21,9 @@ class OtakuNowApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Otaku Now',
+      debugShowCheckedModeBanner: false,
+      theme: otakuTheme(),
       home: SplashScreen()
-      // home: Scaffold(
-      //   appBar: AppBar(title: const Text('Otaku Now')),
-      //   body: MultiBlocProvider(
-      //     providers: [
-      //       BlocProvider<SeriesSearchBloc>(
-      //         create: (BuildContext context) =>
-      //             SeriesSearchBloc(seriesRepository: seriesRepository),
-      //       ),
-      //       BlocProvider<SeriesEpisodesBloc>(
-      //         create: (BuildContext context) =>
-      //             SeriesEpisodesBloc(seriesRepository: seriesRepository),
-      //         child: SeriesScreen(),
-      //       ),
-      //     ],
-      //     child: SearchScreen(),
-      //   ),
-      // ),
     );
   }
 }

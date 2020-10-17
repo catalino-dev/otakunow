@@ -16,11 +16,10 @@ class _EpisodeScreenState extends State<EpisodeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print('${widget.episode.episodeNo}: ========= background-${widget.episode.episodeNo}');
     return Hero(
       tag: "background-${widget.episode.episodeNo}",
       child: Scaffold(
-        backgroundColor: Palette.primary,
+        backgroundColor: Palette.primaryBg,
         body: ListView(
           children: <Widget>[
             Stack(
@@ -43,7 +42,7 @@ class _EpisodeScreenState extends State<EpisodeScreen> {
                     ),
                     IconButton(
                       padding: EdgeInsets.only(right: 30.0),
-                      onPressed: () => print('Add to Favorites'),
+                      onPressed: () => print('Thanks for the heart.'),
                       icon: Icon(Icons.favorite),
                       iconSize: 30.0,
                       color: Colors.white,
@@ -63,6 +62,7 @@ class _EpisodeScreenState extends State<EpisodeScreen> {
                     style: TextStyle(
                       fontSize: 24.0,
                       fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -72,12 +72,13 @@ class _EpisodeScreenState extends State<EpisodeScreen> {
                     style: TextStyle(
                       fontSize: 14.0,
                       fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(height: 12.0),
                   Divider(
-                      color: Colors.blueGrey
+                      color: Colors.white70
                   ),
                   SizedBox(height: 15.0),
                   Row(
@@ -88,7 +89,7 @@ class _EpisodeScreenState extends State<EpisodeScreen> {
                           Text(
                             'AIRING',
                             style: TextStyle(
-                              color: Colors.black54,
+                              color: Colors.white70,
                               fontSize: 14.0,
                             ),
                           ),
@@ -98,6 +99,7 @@ class _EpisodeScreenState extends State<EpisodeScreen> {
                             style: TextStyle(
                               fontSize: 16.0,
                               fontWeight: FontWeight.w600,
+                              color: Colors.white,
                             ),
                           ),
                         ],
@@ -107,7 +109,7 @@ class _EpisodeScreenState extends State<EpisodeScreen> {
                           Text(
                             'EPISODE',
                             style: TextStyle(
-                              color: Colors.black54,
+                              color: Colors.white70,
                               fontSize: 14.0,
                             ),
                           ),
@@ -117,6 +119,7 @@ class _EpisodeScreenState extends State<EpisodeScreen> {
                             style: TextStyle(
                               fontSize: 16.0,
                               fontWeight: FontWeight.w600,
+                              color: Colors.white,
                             ),
                           ),
                         ],
@@ -126,7 +129,7 @@ class _EpisodeScreenState extends State<EpisodeScreen> {
                           Text(
                             'FILLER',
                             style: TextStyle(
-                              color: Colors.black54,
+                              color: Colors.white70,
                               fontSize: 14.0,
                             ),
                           ),
@@ -136,6 +139,7 @@ class _EpisodeScreenState extends State<EpisodeScreen> {
                             style: TextStyle(
                               fontSize: 16.0,
                               fontWeight: FontWeight.w600,
+                              color: Colors.white,
                             ),
                           ),
                         ],
@@ -143,17 +147,6 @@ class _EpisodeScreenState extends State<EpisodeScreen> {
                     ],
                   ),
                   SizedBox(height: 25.0),
-                  Container(
-                    height: 120.0,
-                    child: SingleChildScrollView(
-                      child: Text(
-                        'Long but short description',
-                        style: TextStyle(
-                          color: Colors.black54,
-                        ),
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),

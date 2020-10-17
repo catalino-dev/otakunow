@@ -5,14 +5,15 @@ class ApiErrorMessage {
   final String message;
   final String error;
 
-  const ApiErrorMessage({this.status, this.type, this.message, this.error});
+  const ApiErrorMessage(this.status, this.type, this.message, this.error);
 
   static ApiErrorMessage fromJson(dynamic json) {
+    print(json['status']);
     return ApiErrorMessage(
-      status: json['status'] as int,
-      type: json['type'] as String,
-      message: json['message'] as String,
-      error: json['error'] as String,
+      json['status'] as int,
+      json['type'] as String,
+      json['message'] as String,
+      json['error'] as String,
     );
   }
 }

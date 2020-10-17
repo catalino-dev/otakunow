@@ -34,7 +34,7 @@ class ContentScroll<T extends ContentItem> extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                onTap: () => print('View $title'),
+                onTap: () => print('Scroll to the right...'),
                 child: Icon(
                   Icons.arrow_forward,
                   color: Colors.black,
@@ -51,7 +51,6 @@ class ContentScroll<T extends ContentItem> extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: items.length,
             itemBuilder: (BuildContext context, int index) {
-              print('items[index].index: ========= background-${items[index].index}');
               return GestureDetector(
                 onTap: () => press(index),
                 child: Hero(
@@ -66,7 +65,7 @@ class ContentScroll<T extends ContentItem> extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.0),
                       boxShadow: [
                         BoxShadow(
-                          color: Palette.primary,
+                          color: Palette.primaryBg,
                           offset: Offset(0.0, 4.0),
                         ),
                       ],
@@ -81,7 +80,8 @@ class ContentScroll<T extends ContentItem> extends StatelessWidget {
                             "${items[index].title}",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 16.0
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w600
                             ),
                           ),
                         ]

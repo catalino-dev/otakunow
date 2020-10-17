@@ -1,5 +1,4 @@
 import 'package:flare_flutter/flare_actor.dart';
-import 'package:flare_flutter/flare_controls.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:otakunow/domain/episodes/series_episodes_bloc.dart';
@@ -71,7 +70,6 @@ class _SearchBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight= MediaQuery.of(context).size.height;
 
     return BlocBuilder<SeriesSearchBloc, SeriesSearchState>(
