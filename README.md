@@ -1,6 +1,6 @@
 # otakunow
 
-New and greatest otaku news at your fingertips.
+New and greatest otaku app at your fingertips.
 
 ## Getting Started
 
