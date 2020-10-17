@@ -42,7 +42,7 @@ class SeriesEpisodesBloc extends Bloc<SeriesEpisodesEvent, SeriesEpisodesState> 
         } catch (error) {
           yield error is ApiErrorMessage
               ? EpisodeStateError(error.message)
-              : EpisodeStateError('something went wrong');
+              : EpisodeStateError('Something went wrong.');
         }
       }
     }

@@ -35,7 +35,7 @@ class _EpisodeScreenState extends State<EpisodeScreen> {
                       color: Colors.white,
                     ),
                     Image(
-                      image: AssetImage('assets/images/otaku_logo.png'),
+                      image: AssetImage('assets/images/otaku_now_logo.png'),
                       height: 60.0,
                       width: 150.0,
                       color: Colors.white,

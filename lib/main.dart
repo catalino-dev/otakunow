@@ -10,6 +10,7 @@ import 'package:otakunow/domain/search/series_search_bloc.dart';
 import 'package:otakunow/domain/series_repository.dart';
 import 'package:otakunow/screens/screens.dart';
 import 'package:otakunow/screens/series_screen.dart';
+import 'package:otakunow/widgets/custom_app_bar.dart';
 
 void main() {
   runApp(OtakuNowApp());
@@ -54,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
           context,
           MaterialPageRoute(
             builder: (context) => Scaffold(
-              appBar: AppBar(title: const Text('Otaku Now')),
+              appBar: CustomAppBar(),
               body: MultiBlocProvider(
                 providers: [
                   BlocProvider<SeriesSearchBloc>(

@@ -29,12 +29,10 @@ class EpisodesPreview extends StatelessWidget {
           );
         }
         if (state is EpisodeStateError) {
-          return Text(state.error);
+          return Expanded(child: _SeriesEpisodes(episodes: []));
         }
         if (state is EpisodeStateSuccess) {
-          return state.episodes.isEmpty
-              ? const Text('No episodes found')
-              : Expanded(child: _SeriesEpisodes(episodes: state.episodes));
+          return Expanded(child: _SeriesEpisodes(episodes: state.episodes));
         }
         return const Text('Error - no id specified');
       },

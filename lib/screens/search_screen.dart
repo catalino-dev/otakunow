@@ -7,6 +7,7 @@ import 'package:otakunow/domain/search/series_search_bloc.dart';
 import 'package:otakunow/domain/search/series_search_event.dart';
 import 'package:otakunow/domain/search/series_search_state.dart';
 import 'package:otakunow/screens/series_screen.dart';
+import 'package:otakunow/widgets/no_results.dart';
 
 class SearchScreen extends StatelessWidget {
   @override
@@ -75,32 +76,56 @@ class _SearchBody extends StatelessWidget {
     return BlocBuilder<SeriesSearchBloc, SeriesSearchState>(
       builder: (context, state) {
         if (state is SearchStateLoading) {
-          return Container(
-            height: screenHeight / 3,
-            child: const FlareActor(
-              'assets/earth.flr',
-              alignment: Alignment.topCenter,
-              fit: BoxFit.scaleDown,
-              animation: 'loading',
-            ),
+          return Column(
+            children: [
+              Container(
+                height: screenHeight / 3,
+                child: const FlareActor(
+                  'assets/earth.flr',
+                  alignment: Alignment.topCenter,
+                  fit: BoxFit.scaleDown,
+                  animation: 'loading',
+                ),
+              ),
+              Text(
+                "Searching the world...",
+                style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w600
+                ),
+              ),
+            ],
           );
         }
         if (state is SearchStateError) {
-          return Text(state.error);
+          return NoResults();
         }
         if (state is SearchStateSuccess) {
           return state.results.isEmpty
-              ? const Text('No Results')
+              ? NoResults()
               : Expanded(child: _SearchResults(results: state.results));
         }
-        return Container(
-          height: screenHeight / 3,
-          child: const FlareActor(
-            'assets/earth.flr',
-            alignment: Alignment.topCenter,
-            fit: BoxFit.scaleDown,
-            animation: 'idle',
-          ),
+        return Column(
+          children: [
+            Container(
+              height: screenHeight / 3,
+              child: const FlareActor(
+                'assets/earth.flr',
+                alignment: Alignment.topCenter,
+                fit: BoxFit.scaleDown,
+                animation: 'idle',
+              ),
+            ),
+            Text(
+              "Try searching for an anime title...",
+              style: TextStyle(
+                  color: Colors.blueGrey,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w600
+              ),
+            ),
+          ],
         );
       },
     );

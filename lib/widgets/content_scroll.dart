@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:otakunow/config/palette.dart';
 import 'package:otakunow/widgets/content_item.dart';
+import 'package:otakunow/widgets/no_results.dart';
 
 class ContentScroll<T extends ContentItem> extends StatelessWidget {
   final List<T> items;
@@ -44,7 +45,7 @@ class ContentScroll<T extends ContentItem> extends StatelessWidget {
             ],
           ),
         ),
-        Container(
+        items.length > 0 ? Container(
           height: boxHeight,
           child: ListView.builder(
             padding: EdgeInsets.symmetric(horizontal: 30.0),
@@ -92,7 +93,7 @@ class ContentScroll<T extends ContentItem> extends StatelessWidget {
               );
             },
           ),
-        ),
+        ) : NoResults(),
       ],
     );
   }
