@@ -1,6 +1,4 @@
-import 'package:equatable/equatable.dart';
-
-class SeriesModel extends Equatable {
+class SeriesModel {
   final int id;
   final String url;
   final String imageUrl;
@@ -33,7 +31,4 @@ class SeriesModel extends Equatable {
       json['rated'],
     );
   }
-
-  @override
-  List<Object> get props => throw UnimplementedError();
 }

@@ -15,13 +15,8 @@ class SeriesSearchBloc extends Bloc<SeriesSearchEvent, SeriesSearchState> {
       : super(SearchStateEmpty());
 
   @override
-  Stream<Transition<SeriesSearchEvent, SeriesSearchState>> transformEvents(
-    Stream<SeriesSearchEvent> events,
-    Stream<Transition<SeriesSearchEvent, SeriesSearchState>> Function(
-      SeriesSearchEvent event,
-    )
-        transitionFn,
-  ) {
+  Stream<Transition<SeriesSearchEvent, SeriesSearchState>> transformEvents(Stream<SeriesSearchEvent> events,
+      Stream<Transition<SeriesSearchEvent, SeriesSearchState>> Function(SeriesSearchEvent event) transitionFn) {
     return events
         .debounceTime(const Duration(milliseconds: 600))
         .switchMap(transitionFn);
