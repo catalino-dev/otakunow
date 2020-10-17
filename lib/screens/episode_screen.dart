@@ -85,7 +85,7 @@ class _EpisodeScreenState extends State<EpisodeScreen> {
                       Column(
                         children: <Widget>[
                           Text(
-                            'AIRING',
+                            'AIRED',
                             style: TextStyle(
                               color: Colors.white70,
                               fontSize: 14.0,

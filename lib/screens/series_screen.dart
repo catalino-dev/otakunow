@@ -116,7 +116,7 @@ class _SeriesScreenState extends State<SeriesScreen> {
                         ),
                         SizedBox(height: 2.0),
                         Text(
-                          'Yes',
+                          widget.item.airing ? 'Yes' : 'No',
                           style: TextStyle(
                             fontSize: 16.0,
                             fontWeight: FontWeight.w600,
