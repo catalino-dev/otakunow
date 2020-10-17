@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:otakunow/domain/search_result_item.dart';
-import 'package:otakunow/domain/series_search_bloc.dart';
-import 'package:otakunow/domain/series_search_event.dart';
-import 'package:otakunow/domain/series_search_state.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:otakunow/domain/search/search_result_item.dart';
+import 'package:otakunow/domain/search/series_search_bloc.dart';
+import 'package:otakunow/domain/search/series_search_event.dart';
+import 'package:otakunow/domain/search/series_search_state.dart';
+import 'package:otakunow/screens/series_screen.dart';
 
 class SearchScreen extends StatelessWidget {
   @override
@@ -93,8 +93,15 @@ class _SearchResults extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return GridView.builder(
       itemCount: results.length,
+      scrollDirection: Axis.vertical,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: 20.0,
+        crossAxisSpacing: 20.0,
+        childAspectRatio: 0.75,
+      ),
       itemBuilder: (BuildContext context, int index) {
         return _SearchResultItem(item: results[index]);
       },
@@ -109,16 +116,40 @@ class _SearchResultItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: CircleAvatar(
-        child: Image.network(item.imageUrl),
+    return GestureDetector(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => SeriesScreen(item: item),
+        ),
       ),
-      title: Text(item.title),
-      onTap: () async {
-        if (await canLaunch(item.url)) {
-          await launch(item.url);
-        }
-      },
+      child: Container(
+        margin: EdgeInsets.symmetric(
+          horizontal: 10.0,
+          vertical: 20.0,
+        ),
+        width: 150.0,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black54,
+              offset: Offset(0.0, 4.0),
+              blurRadius: 6.0,
+            ),
+          ],
+        ),
+        child: Hero(
+          tag: item.imageUrl,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10.0),
+            child: Image.network(
+                item.imageUrl,
+                fit: BoxFit.cover
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

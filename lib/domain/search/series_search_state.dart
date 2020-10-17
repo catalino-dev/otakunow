@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:otakunow/domain/search_result_item.dart';
+import 'package:otakunow/domain/search/search_result_item.dart';
 
 abstract class SeriesSearchState extends Equatable {
   const SeriesSearchState();

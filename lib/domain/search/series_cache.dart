@@ -1,4 +1,4 @@
-import 'package:otakunow/domain/search_result.dart';
+import 'package:otakunow/domain/search/search_result.dart';
 
 class SeriesCache {
   final _cache = <String, SearchResult>{};
